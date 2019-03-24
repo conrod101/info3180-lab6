@@ -5,3 +5,22 @@ body {
 footer  {
     padding-top: 20px;
 }
+
+news-list {
+    height:50px;
+    width:270px;
+    padding: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: 300px;
+    display: grid;
+    margin:10px;
+}
+thumbnail{
+    color: red;
+    width: 2px;
+}
+
+h5 {
+  border-top: 3px solid green;
+}

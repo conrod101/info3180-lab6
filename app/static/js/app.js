@@ -27,17 +27,38 @@ Vue.component('app-header', {
 Vue.component('news-list',{
     template:`
     <div class = "news">
-    <h2> News</h2>
-    <ul class="news__list">
-        <li class="news__item">News item 1</li>
-        <li class="news__item">News item 2</li>
-        <li class="news__item">News item 3</li>
-        <li v-for= "articles in articles" class="news__item">
-        {{ articles.title }} </li>
-        <img :src='articleurlToImage' />
-    </ul>
+    <div class="form-inline d-flex justify-content-center">   
+    <div class="form-group mx-sm-3 mb-2">      
+    <label class="sr-only" for="search">Search</label>       
+    <input type="search" name="search" v-model="searchTerm"
+    id="search" class="form-control mb-2 mr-sm-2" 
+    placeholder="Enter search term here" />        
+    <p>You are searching for {{ searchTerm }}</p>    
+    </div> 
+    </div>
     
-    </div>      
+    
+    
+    
+  <h2>News</h2>
+        <div class="row">
+            <div class="col-4" v-for="article in articles">
+                <div class="card">
+                 <h5 class="card-title"><b>{{ article.title }}</b></h5>
+                    <img class="card-img-top" v-bind:src="article.urlToImage"/>
+                    <div class="card-body">
+                       
+                        <p class="card-text">
+                            {{ article.description}} 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    
     `,
     created: function(){
         let self = this;
@@ -52,7 +73,8 @@ Vue.component('news-list',{
     },
     data: function(){
         return {
-            articles: []
+            articles: [],
+            searchTerm: ''
         }
     }
     
